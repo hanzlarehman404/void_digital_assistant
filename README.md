@@ -1,6 +1,4 @@
- # <img width="120" height="120" alt="ic_launcher" src="https://github.com/user-attachments/assets/ba16368d-3b90-4a92-ba97-6b3d4afb7fff" />  
-
- # Void Digital Assistant
+  # <img width="100" height="100" alt="ic_launcher" src="https://github.com/user-attachments/assets/ba16368d-3b90-4a92-ba97-6b3d4afb7fff" />  Void Digital Assistant
 
 A lightweight Android utility designed to **eliminate intrusive digital assistant pop-ups** caused by faulty or unstable headphone connections.
 
