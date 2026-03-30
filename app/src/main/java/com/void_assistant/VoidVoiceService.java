@@ -19,7 +19,9 @@ public class VoidVoiceService extends VoiceInteractionService {
 
     @Override
     public void showSession(Bundle args, int flags) {
-        DebugLogger.log(this, "VoidVoiceService.showSession: Triggered with flags=" + flags);
+        DebugLogger.log(this, "VoidVoiceService.showSession: Trigger recognized. Consuming silently (flags=" + flags + ")");
+        // CALL super to satisfy the OS that the assistant trigger has been correctly Handled.
+        // Our Session window is 0x0 and Finish() happens in onShow.
         super.showSession(args, flags);
     }
 

@@ -17,6 +17,18 @@ public class VoidSessionService extends VoiceInteractionSessionService {
         SilentSession(Context context) { super(context); }
 
         @Override
+        public void onCreate() {
+            super.onCreate();
+            // Force the session window to be completely invisible and non-interactive
+            if (getWindow() != null && getWindow().getWindow() != null) {
+                android.view.Window w = getWindow().getWindow();
+                w.setBackgroundDrawableResource(android.R.color.transparent);
+                w.setDimAmount(0f);
+                w.setLayout(0, 0); // 0-size
+            }
+        }
+
+        @Override
         public void onPrepareShow(Bundle args, int showFlags) {
             super.onPrepareShow(args, showFlags);
             DebugLogger.log(getContext(), "SilentSession.onPrepareShow: Proceeding to hide");
