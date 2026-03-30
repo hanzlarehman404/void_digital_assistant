@@ -1,41 +1,23 @@
 plugins {
     id 'com.android.application'
 }
-
 android {
     namespace 'com.void_assistant'
     compileSdk 34
-
     defaultConfig {
         applicationId "com.void_assistant"
-        minSdk 26          // Android 8.0+ — covers all modern devices
+        minSdk 26
         targetSdk 34
         versionCode 1
         versionName "1.0"
     }
-
     buildTypes {
-        release {
-            minifyEnabled false
-            // No ProGuard — keep all class names visible in manifest
-        }
-        debug {
-            applicationIdSuffix ""
-            debuggable true
-        }
+        release { minifyEnabled false }
+        debug { debuggable true }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
-    // No need for ViewBinding or DataBinding
-    buildFeatures {
-        buildConfig false
-    }
 }
-
-dependencies {
-    // No external dependencies — pure AOSP APIs only
-}
+dependencies {}
