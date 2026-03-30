@@ -13,6 +13,7 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        DebugLogger.log(this, "MainActivity.onCreate: Started activity with intent=" + getIntent());
         super.onCreate(savedInstanceState);
 
         LinearLayout root = new LinearLayout(this);

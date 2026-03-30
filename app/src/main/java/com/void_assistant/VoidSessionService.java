@@ -17,8 +17,14 @@ public class VoidSessionService extends VoiceInteractionSessionService {
         SilentSession(Context context) { super(context); }
 
         @Override
+        public void onPrepareShow(Bundle args, int showFlags) {
+            super.onPrepareShow(args, showFlags);
+            DebugLogger.log(getContext(), "SilentSession.onPrepareShow: Proceeding to hide");
+        }
+
+        @Override
         public void onShow(Bundle args, int showFlags) {
-            DebugLogger.log(getContext(), "SilentSession.onShow: flags=" + showFlags);
+            DebugLogger.log(getContext(), "SilentSession.onShow: Proceeding to hide");
             hide();
             finish();
         }

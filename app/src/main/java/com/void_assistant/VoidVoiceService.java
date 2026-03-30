@@ -6,9 +6,15 @@ import android.os.Bundle;
 public class VoidVoiceService extends VoiceInteractionService {
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+        DebugLogger.log(this, "VoidVoiceService.onCreate: Service instantiated");
+    }
+
+    @Override
     public void onReady() {
         super.onReady();
-        DebugLogger.log(this, "VoidVoiceService.onReady: Service is ready");
+        DebugLogger.log(this, "VoidVoiceService.onReady: System has bound and is ready");
     }
 
     @Override
