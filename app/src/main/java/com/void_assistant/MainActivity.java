@@ -2,6 +2,7 @@ package com.void_assistant;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.widget.*;
@@ -15,6 +16,11 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         DebugLogger.log(this, "MainActivity.onCreate: Started activity with intent=" + getIntent());
         super.onCreate(savedInstanceState);
+
+        // Request RECORD_AUDIO runtime permission (often required by OS to bind VoiceInteractionService)
+        if (checkSelfPermission(android.Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{android.Manifest.permission.RECORD_AUDIO}, 1);
+        }
 
         LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);

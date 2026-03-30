@@ -25,13 +25,19 @@ public class VoidSessionService extends VoiceInteractionSessionService {
                 w.setBackgroundDrawableResource(android.R.color.transparent);
                 w.setDimAmount(0f);
                 w.setLayout(0, 0); // 0-size
+                w.addFlags(android.view.WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                        | android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             }
+            hide();
+            finish();
         }
 
         @Override
         public void onPrepareShow(Bundle args, int showFlags) {
             super.onPrepareShow(args, showFlags);
             DebugLogger.log(getContext(), "SilentSession.onPrepareShow: Proceeding to hide");
+            hide();
+            finish();
         }
 
         @Override
@@ -44,14 +50,12 @@ public class VoidSessionService extends VoiceInteractionSessionService {
         @Override
         public void onHandleAssist(AssistState state) {
             DebugLogger.log(getContext(), "SilentSession.onHandleAssist triggered");
-            hide();
             finish();
         }
 
         @Override
         public void onHandleScreenshot(android.graphics.Bitmap screenshot) {
             DebugLogger.log(getContext(), "SilentSession.onHandleScreenshot triggered");
-            hide();
             finish();
         }
     }

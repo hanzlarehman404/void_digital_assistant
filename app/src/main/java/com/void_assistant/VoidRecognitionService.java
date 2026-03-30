@@ -11,12 +11,10 @@ public class VoidRecognitionService extends RecognitionService {
 
     @Override
     protected void onStartListening(Intent recognizerIntent, Callback listener) {
-        DebugLogger.log(this, "VoidRecognitionService.onStartListening: Intent=" + recognizerIntent);
+        DebugLogger.log(this, "VoidRecognitionService: Absorbing listening request.");
         try {
-            listener.readyForSpeech(new Bundle());
             listener.results(new Bundle());
-        } catch (RemoteException e) {
-            Log.e(TAG, "RemoteException in onStartListening", e);
+        } catch (RemoteException ignored) {
         }
     }
 
