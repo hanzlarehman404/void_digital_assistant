@@ -1,8 +1,6 @@
-Here’s a **clean, professional README.md** you can directly copy into your repo:
+ # <img width="120" height="120" alt="ic_launcher" src="https://github.com/user-attachments/assets/ba16368d-3b90-4a92-ba97-6b3d4afb7fff" />  
 
----
-
-# 🚀 Void Digital Assistant
+ # Void Digital Assistant
 
 A lightweight Android utility designed to **eliminate intrusive digital assistant pop-ups** caused by faulty or unstable headphone connections.
 
