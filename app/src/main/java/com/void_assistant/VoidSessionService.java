@@ -18,19 +18,22 @@ public class VoidSessionService extends VoiceInteractionSessionService {
 
         @Override
         public void onShow(Bundle args, int showFlags) {
-            // Called if the session is ever shown — immediately hide.
-            // Do NOT call super — prevents any window from drawing.
+            // Called if the session is ever shown — immediately hide AND finish.
+            // Do NOT call super — prevents any window from drawing or lasting.
             hide();
+            finish();
         }
 
         @Override
         public void onHandleAssist(AssistState state) {
             hide();
+            finish();
         }
 
         @Override
         public void onHandleScreenshot(android.graphics.Bitmap screenshot) {
             hide();
+            finish();
         }
     }
 }

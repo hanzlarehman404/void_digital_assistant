@@ -10,14 +10,17 @@ public class VoidVoiceService extends VoiceInteractionService {
         super.onReady();
     }
 
-    /**
-     * Called by Android when the assistant is triggered (headphone button etc).
-     * We override showSession to intercept it HERE — before any UI is shown.
-     * Passing null options with no flags means nothing launches.
-     */
     @Override
     public void showSession(Bundle args, int flags) {
-        // Do NOT call super.showSession() — that would show the session UI.
-        // By swallowing this call, nothing happens. Trigger is consumed silently.
+        // CALL super.showSession() — this lets the system know we've acknowledged the trigger.
+        // Our Session (SilentSession) is configured to hide itself immediately in onShow().
+        super.showSession(args, flags);
+    }
+
+    @Override
+    public void onLaunchVoiceAssistFromKeyguard() {
+        // Called when triggered from lock screen.
+        // Call showSession to ensure it's "handled" then hidden.
+        showSession(new Bundle(), 0);
     }
 }

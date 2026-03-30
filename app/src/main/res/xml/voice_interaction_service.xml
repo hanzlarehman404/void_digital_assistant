@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:sessionService="com.void_assistant.VoidSessionService"
     android:recognitionService="com.void_assistant.VoidRecognitionService"
+    android:settingsActivity="com.void_assistant.MainActivity"
     android:supportsAssist="true"
     android:supportsLocalInteraction="true"
     android:supportsLaunchVoiceAssistFromKeyguard="true" />

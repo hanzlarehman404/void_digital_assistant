@@ -23,13 +23,30 @@
             </intent-filter>
         </activity>
 
-        <!-- Fallback silent activity (no intent-filters — not triggered directly) -->
+        <!-- Fallback silent activity (exported so the system can launch it for specific intents) -->
         <activity
             android:name=".AssistActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/AppTheme.Transparent"
             android:excludeFromRecents="true"
-            android:noHistory="true" />
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.ASSIST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VOICE_COMMAND" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH_LONG_PRESS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VOICE_ASSIST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <!--
             VoiceInteractionService — THIS is what intercepts the headphone trigger.
