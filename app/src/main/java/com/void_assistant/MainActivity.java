@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
         addRow(card, "✅", "Registered as digital assistant");
         addRow(card, "✅", "Headphone button trigger absorbed");
         addRow(card, "✅", "No overlay — game keeps focus");
-        addRow(card, "✅", "No sound, no popup, no flash");
+        addRow(card, "📁", "Logs: Internal Storage/Android/data/com.void_assistant/files/void_assistant_log.txt");
 
         // Button to open default apps settings
         Button btn = new Button(this);

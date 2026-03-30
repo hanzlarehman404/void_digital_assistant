@@ -8,19 +8,18 @@ public class VoidVoiceService extends VoiceInteractionService {
     @Override
     public void onReady() {
         super.onReady();
+        DebugLogger.log(this, "VoidVoiceService.onReady: Service is ready");
     }
 
     @Override
     public void showSession(Bundle args, int flags) {
-        // CALL super.showSession() — this lets the system know we've acknowledged the trigger.
-        // Our Session (SilentSession) is configured to hide itself immediately in onShow().
+        DebugLogger.log(this, "VoidVoiceService.showSession: Triggered with flags=" + flags);
         super.showSession(args, flags);
     }
 
     @Override
     public void onLaunchVoiceAssistFromKeyguard() {
-        // Called when triggered from lock screen.
-        // Call showSession to ensure it's "handled" then hidden.
+        DebugLogger.log(this, "VoidVoiceService.onLaunchVoiceAssistFromKeyguard: Triggered from lock screen");
         showSession(new Bundle(), 0);
     }
 }
