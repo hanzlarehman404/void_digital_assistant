@@ -35,27 +35,23 @@ public class VoidSessionService extends VoiceInteractionSessionService {
         @Override
         public void onPrepareShow(Bundle args, int showFlags) {
             super.onPrepareShow(args, showFlags);
-            DebugLogger.log(getContext(), "SilentSession.onPrepareShow: Proceeding to hide");
             hide();
             finish();
         }
 
         @Override
         public void onShow(Bundle args, int showFlags) {
-            DebugLogger.log(getContext(), "SilentSession.onShow: Proceeding to hide");
             hide();
             finish();
         }
 
         @Override
         public void onHandleAssist(AssistState state) {
-            DebugLogger.log(getContext(), "SilentSession.onHandleAssist triggered");
             finish();
         }
 
         @Override
         public void onHandleScreenshot(android.graphics.Bitmap screenshot) {
-            DebugLogger.log(getContext(), "SilentSession.onHandleScreenshot triggered");
             finish();
         }
     }

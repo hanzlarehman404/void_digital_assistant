@@ -7,7 +7,6 @@ public class AssistActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        DebugLogger.log(this, "AssistActivity.onCreate: Triggered by system intent=" + getIntent());
         finish();
         super.onCreate(savedInstanceState);
     }

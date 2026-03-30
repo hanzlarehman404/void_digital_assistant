@@ -14,7 +14,6 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        DebugLogger.log(this, "MainActivity.onCreate: Started activity with intent=" + getIntent());
         super.onCreate(savedInstanceState);
 
         // Request RECORD_AUDIO runtime permission (often required by OS to bind VoiceInteractionService)
@@ -50,7 +49,7 @@ public class MainActivity extends Activity {
         addRow(card, "✅", "Registered as digital assistant");
         addRow(card, "✅", "Headphone button trigger absorbed");
         addRow(card, "✅", "No overlay — game keeps focus");
-        addRow(card, "📁", "Logs: Internal Storage/Android/data/com.void_assistant/files/void_assistant_log.txt");
+        addRow(card, "✅", "No sound, no popup, no flash");
 
         // Button to open default apps settings
         Button btn = new Button(this);
