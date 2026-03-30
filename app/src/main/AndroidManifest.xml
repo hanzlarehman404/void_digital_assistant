@@ -3,7 +3,6 @@
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="false"
@@ -13,7 +12,7 @@
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="true">
 
-        <!-- Launcher screen -->
+        <!-- Launcher -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -24,28 +23,17 @@
             </intent-filter>
         </activity>
 
-        <!-- Silently absorbs ASSIST / headphone trigger — finishes immediately -->
+        <!-- Fallback silent activity (no intent-filters — not triggered directly) -->
         <activity
             android:name=".AssistActivity"
-            android:exported="true"
+            android:exported="false"
             android:theme="@style/AppTheme.Transparent"
-            android:launchMode="singleTask"
-            android:taskAffinity="com.void_assistant.assist"
             android:excludeFromRecents="true"
-            android:noHistory="true">
-            <intent-filter android:priority="1000">
-                <action android:name="android.intent.action.ASSIST" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <intent-filter android:priority="1000">
-                <action android:name="android.intent.action.VOICE_COMMAND" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+            android:noHistory="true" />
 
         <!--
-            VoiceInteractionService — the entry point Android looks for.
-            BIND_VOICE_INTERACTION permission is required so only the OS can bind.
+            VoiceInteractionService — THIS is what intercepts the headphone trigger.
+            showSession() is overridden to do nothing, consuming the event silently.
         -->
         <service
             android:name=".VoidVoiceService"
@@ -59,11 +47,7 @@
                 android:resource="@xml/voice_interaction_service" />
         </service>
 
-        <!--
-            VoiceInteractionSessionService — Android BINDS to this to validate
-            the assistant before enabling the Save button.
-            Must be exported=true with correct permission.
-        -->
+        <!-- Session service — Android binds here to validate; sessions hide instantly -->
         <service
             android:name=".VoidSessionService"
             android:exported="true"
@@ -73,10 +57,7 @@
             </intent-filter>
         </service>
 
-        <!--
-            RecognitionService stub — required by voice_interaction_service.xml.
-            Android checks this exists; it does not need to do real speech recognition.
-        -->
+        <!-- Recognition stub — required by voice_interaction_service.xml -->
         <service
             android:name=".VoidRecognitionService"
             android:exported="true"
